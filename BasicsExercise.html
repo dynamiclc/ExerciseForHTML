@@ -1,0 +1,22 @@
+<!-- Placeholder used in a search input field -->
+<form>
+  <input name="q1" placeholder="Type a website name here">
+  <input type="submit" value="Search">
+</form>
+
+<!-- Autofocus used in a search input field -->
+<form>
+  <input name="q2" placeholder="user@domain" autofocus>
+  <input type="submit" value="Email duplication check">
+</form>
+
+<!-- Autofocus with fallback in an input field -->
+<form name="f">
+  <input id="q3" autofocus>
+  <script>
+    if (!("autofocus" in document.createElement("input"))) {
+      document.getElementById("q3").focus();
+    }
+  </script>
+  <input type="submit" value="Go">
+</form>
