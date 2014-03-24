@@ -1,24 +1,39 @@
-<!-- Exercise file for learning basics of HTML, CSS, JavaScript, PHP, and more -->
+<!-- Exercise file for learning basics of HTML, CSS, JavaScript, PHP, and more.
+-->
 
 <html>
 
 <head>
-  <link rel="stylesheet" href="screen.cs" type="text/css" />
+  <link rel="stylesheet" type="text/css"
+    href="iphone.css" media="only screen and (max-width: 480px)" />
+  <link rel="stylesheet" type="text/css"
+    href="desktop.css" media="screen and (min-width: 481px)" />
+  <!--[if IE]>
+  <link rel="stylesheet" type="text/css"
+    href="explorer.css" media="all" />
+  <![endif]-->
   <title>Cong Liu</title>
+
+  <!-- Controlling the Page Scaling
+       o  Mobile Safari assumes 980px wide unless told by meta tag
+       o  The viewport meta tag is ignored by other browers other than Mobile
+          Safari
+       o   
+  -->
+  <meta name="viewport" content="user-scalable=no, width=device-width" />
 </head>
 
 <body>
   <div id="container">
     <div id="header">
       <h1><a ref="./">Cong Liu</a></h1>
-      
       <div id="utility">
         <ul>
           <li><a ref="about.html">About</a></li>
           <li><a ref="blog.html">Blog</a></li>
         </ul>
-      </div> <!-- utility -->
-      
+      </div>
+
       <div id="nav">
         <ul>
           <li><a ref="consulting-clinic.html">Consulting Clinic</a></li>
@@ -27,7 +42,7 @@
         </ul>
       </div>
     </div> <!-- nav -->
-    
+
     <div id="content">
       <h2>About</h2>
       <p>Cong Liu is a developer, speaker and author. His 
@@ -36,7 +51,7 @@
          ... 
          </p>
     </div> <!-- content -->
-    
+
     <div id="sidebar">
       <img alt="Manga Portrait of Cong Liu"
            src="images/avatar_manga.jpg"/>
@@ -44,7 +59,7 @@
           Wall Street Journal has called an expert on publishing desktop
           data to the web.</p>
     </div> <!-- sidebar -->
-    
+
     <div id="footer">
       <ul>
         <li><a ref="services.html">Services</a></li>
@@ -57,29 +72,31 @@
     <!-- PHP code doing parity checksum of Chinese citizen ID number -->
     <?php
     function id_card_check($id) {
-        $s = str_split ( strrev ( $id ) ); // Reverse the string and put into an array
+        // Reverse string and put into array
+        $s = str_split ( strrev ( $id ) );
         $j = 0; // the check digit
-        foreach ( $s as $k => $v ) { $j += $v * (pow ( 2, $k + 1 ) % 11);} // Calculate S
+        // Calculate S
+        foreach ( $s as $k => $v ) { $j += $v * (pow ( 2, $k + 1 ) % 11);}
         $j = (12 - $j % 11) % 11; // Calculate check digit
-        $j = (10 == $j) ? 'X' : $j; // X represents the check digit when it is 10
-        return $j; // Return the check digit
-    }   
-    echo id_card_check ( '11010519491231002' ); // Should return X for this input
-    echo id_card_check ( '50010819850704081' ); // Should return 2 for this input
-    ?>  
-        
+        $j = (10 == $j) ? 'X' : $j; // X represents check digit 10
+        return $j; // Return check digit
+    }
+    echo id_card_check ( '11010519491231002' ); // Should return X
+    echo id_card_check ( '50010819850704081' ); // Should return 2
+    ?>
+
     <!-- Placeholder used in a search input field -->
     <form>
       <input name="q1" placeholder="Type a website name here">
       <input type="submit" value="Search">
     </form>
-        
+
     <!-- Autofocus used in a search input field -->
     <form>
       <input name="q2" placeholder="user@domain" autofocus>
       <input type="submit" value="Email duplication check">
     </form>
-        
+
     <!-- Autofocus with fallback in an input field -->
     <form name="f">
       <input id="q3" autofocus>
@@ -92,7 +109,7 @@
     </form>
 
   </div> <!-- container -->
-  
+
 </body>
 
 </html>
